@@ -1,0 +1,9 @@
+{
+  "name": "Saffron & Spice",
+  "currency": "USD",
+  "language": "en",
+  "timezone": "America/Chicago",
+  "theme": {"primary": "#c64b28"},
+  "hours": {"daily": "11:00-22:30"},
+  "eta_minutes": 30
+}

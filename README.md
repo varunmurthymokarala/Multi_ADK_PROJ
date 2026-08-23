@@ -126,9 +126,9 @@ Before writing code, confirm:
 
 ## 🚧 Status
 
-> **Current phase:** 📝 Architecture complete — not yet building code.
+> **Current phase:** 🚧 Phase 1 MVP in progress — local menu chat and ordering are runnable.
 >
-> Next milestone: **Phase 1** — scaffold `restaurant-chat-framework/` repo with FastAPI + ADK + one tenant + Stripe test mode.
+> Run it locally: `cd framework`, install `requirements.txt`, then `uvicorn api.main:app --reload`. Open `http://127.0.0.1:8000`.
 
 ---
 
