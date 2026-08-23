@@ -1,0 +1,793 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Restaurant Real-Time Chat Support — Complete Architecture Plan</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --panel: #1e293b;
+    --panel-2: #334155;
+    --accent: #38bdf8;
+    --accent-2: #a78bfa;
+    --accent-3: #34d399;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --border: #475569;
+    --code-bg: #0b1220;
+    --warn: #fbbf24;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--text);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    line-height: 1.65;
+  }
+  .container { max-width: 1180px; margin: 0 auto; padding: 48px 28px 96px; }
+  header { text-align: center; padding: 48px 0 36px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+  header .badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #0f172a; font-weight: 700; font-size: 12px; letter-spacing: 1px;
+    padding: 6px 14px; border-radius: 999px; text-transform: uppercase;
+  }
+  h1 {
+    font-size: 38px; margin: 18px 0 10px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  header p { color: var(--muted); max-width: 780px; margin: 0 auto; font-size: 17px; }
+  h2 { font-size: 26px; margin: 56px 0 16px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); display: inline-block; }
+  h3 { font-size: 19px; margin-top: 28px; color: var(--accent); }
+  h4 { font-size: 16px; margin-top: 22px; color: var(--accent-3); }
+  p, li { color: var(--text); }
+  ul, ol { padding-left: 22px; }
+  li { margin: 6px 0; }
+  .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 22px 26px; margin: 18px 0; }
+  .grid { display: grid; gap: 16px; }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 900px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
+  .card { background: var(--panel-2); border-radius: 10px; padding: 18px 20px; border-left: 4px solid var(--accent); }
+  .card.purple { border-left-color: var(--accent-2); }
+  .card.green  { border-left-color: var(--accent-3); }
+  .card h4 { margin-top: 0; }
+  pre {
+    background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px;
+    padding: 16px 18px; overflow-x: auto;
+    font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace;
+    font-size: 13.5px; line-height: 1.55; color: #e0e7ff;
+  }
+  code {
+    font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace;
+    background: rgba(56, 189, 248, 0.12); color: var(--accent);
+    padding: 2px 6px; border-radius: 4px; font-size: 0.92em;
+  }
+  pre code { background: transparent; color: inherit; padding: 0; }
+  .diagram { background: var(--code-bg); border: 1px solid var(--border); border-radius: 10px; padding: 24px; margin: 20px 0; overflow-x: auto; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; background: var(--panel); border-radius: 8px; overflow: hidden; }
+  th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: var(--panel-2); color: var(--accent); font-weight: 600; }
+  tr:last-child td { border-bottom: none; }
+  .toc { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 20px 28px; margin-bottom: 36px; }
+  .toc h3 { margin-top: 0; color: var(--accent-3); }
+  .toc ol { columns: 2; }
+  .toc li { margin: 4px 0; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  @media (max-width: 700px) { .toc ol { columns: 1; } }
+  .phase { display: flex; align-items: center; gap: 14px; background: var(--panel-2); padding: 14px 18px; border-radius: 8px; margin: 10px 0; }
+  .phase-num {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #0f172a; font-weight: 800; width: 38px; height: 38px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .checklist li { list-style: none; position: relative; padding-left: 26px; }
+  .checklist li::before { content: '☐'; position: absolute; left: 0; color: var(--accent); font-size: 18px; }
+  .tag {
+    display: inline-block;
+    background: rgba(167, 139, 250, 0.15); color: var(--accent-2);
+    border: 1px solid var(--accent-2);
+    padding: 2px 10px; border-radius: 999px; font-size: 12px;
+    margin-right: 6px; font-weight: 600;
+  }
+  .tag.green { background: rgba(52, 211, 153, 0.12); color: var(--accent-3); border-color: var(--accent-3); }
+  .tag.blue  { background: rgba(56, 189, 248, 0.12); color: var(--accent); border-color: var(--accent); }
+  .tag.warn  { background: rgba(251, 191, 36, 0.12); color: var(--warn); border-color: var(--warn); }
+  footer { margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; color: var(--muted); font-size: 14px; }
+  .note { background: rgba(56, 189, 248, 0.08); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 6px; margin: 14px 0; }
+  .warn-box { background: rgba(251, 191, 36, 0.08); border-left: 4px solid var(--warn); padding: 14px 18px; border-radius: 6px; margin: 14px 0; }
+  @media print {
+    body { background: #fff; color: #111; }
+    .panel, .card, .toc, table, pre, .diagram { background: #f8fafc; border-color: #cbd5e1; }
+    pre, .diagram { color: #111; }
+    h1 { -webkit-text-fill-color: #1e293b; color: #1e293b; }
+    h2 { color: #0f172a; border-color: #475569; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <span class="badge">Production Architecture Plan</span>
+  <h1>Restaurant Real-Time Chat Support System</h1>
+  <p>A multi-tenant, LLM-driven framework for order placement, queue handling, and customer support — powered by <strong>Google ADK</strong>, <strong>Qwen2.5-Coder (Ollama)</strong>, <strong>FastAPI</strong>, <strong>ChromaDB</strong>, and <strong>MCP for Stripe payments</strong>.</p>
+</header>
+
+<nav class="toc">
+  <h3>📑 Table of Contents</h3>
+  <ol>
+    <li><a href="#goals">Goals &amp; Use Cases</a></li>
+    <li><a href="#overview">High-Level Architecture</a></li>
+    <li><a href="#tech">Technology Stack</a></li>
+    <li><a href="#structure">Project Structure</a></li>
+    <li><a href="#adk">ADK Agent Design</a></li>
+    <li><a href="#rag">RAG &amp; Vector DB Layer</a></li>
+    <li><a href="#state">State &amp; Session Management</a></li>
+    <li><a href="#api">API Layer (FastAPI)</a></li>
+    <li><a href="#mcp">MCP Servers (Payments)</a></li>
+    <li><a href="#channels">Customer Channels (Web, QR, PWA)</a></li>
+    <li><a href="#multitenant">Multi-Tenant Strategy</a></li>
+    <li><a href="#security">Security &amp; Observability</a></li>
+    <li><a href="#deploy">Deployment</a></li>
+    <li><a href="#phases">Phased Roadmap</a></li>
+    <li><a href="#checklist">Pre-Build Checklist</a></li>
+  </ol>
+</nav>
+
+<section id="goals">
+<h2>1. Goals &amp; Use Cases</h2>
+<div class="grid grid-3">
+  <div class="card">
+    <h4>🎯 Primary Goals</h4>
+    <ul>
+      <li>Reduce front-of-house load during peak hours</li>
+      <li>Convert browse-to-order in &lt; 60 seconds</li>
+      <li>Reusable across many restaurants (multi-tenant)</li>
+      <li>Works embedded in any website, via QR, or PWA</li>
+    </ul>
+  </div>
+  <div class="card purple">
+    <h4>🧑‍🍳 Customer Use Cases</h4>
+    <ul>
+      <li>"What's on the menu?" / "Any vegan options?"</li>
+      <li>"I want 2 margherita pizzas for pickup"</li>
+      <li>"How long is the queue right now?"</li>
+      <li>"Can I pay now and pick up later?"</li>
+    </ul>
+  </div>
+  <div class="card green">
+    <h4>🏪 Operator Use Cases</h4>
+    <ul>
+      <li>Onboard a new restaurant in &lt; 30 min</li>
+      <li>Upload menu JSON/CSV → auto-vectorized</li>
+      <li>See live orders and chat history</li>
+      <li>Receive Stripe payments directly</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<section id="overview">
+<h2>2. High-Level Architecture</h2>
+<div class="diagram">
+<svg viewBox="0 0 1100 640" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, sans-serif">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1">
+      <stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" x2="1">
+      <stop offset="0" stop-color="#34d399"/><stop offset="1" stop-color="#38bdf8"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#38bdf8"/>
+    </marker>
+  </defs>
+  <rect x="40" y="20" width="1020" height="90" rx="10" fill="#1e293b" stroke="#475569"/>
+  <text x="550" y="45" text-anchor="middle" fill="#94a3b8" font-size="13" font-weight="700">CUSTOMER-FACING CHANNELS</text>
+  <g font-size="13" fill="#e2e8f0" text-anchor="middle">
+    <rect x="70"  y="58" width="200" height="40" rx="6" fill="#0b1220" stroke="#38bdf8"/><text x="170" y="83">🌐 Web Chat Widget</text>
+    <rect x="300" y="58" width="200" height="40" rx="6" fill="#0b1220" stroke="#a78bfa"/><text x="400" y="83">📱 QR Code Landing</text>
+    <rect x="530" y="58" width="200" height="40" rx="6" fill="#0b1220" stroke="#34d399"/><text x="630" y="83">📲 Mobile PWA</text>
+    <rect x="760" y="58" width="270" height="40" rx="6" fill="#0b1220" stroke="#fbbf24"/><text x="895" y="83">🧩 Website Plugin &lt;script&gt;</text>
+  </g>
+  <line x1="550" y1="115" x2="550" y2="150" stroke="#38bdf8" stroke-width="2" marker-end="url(#arr)"/>
+  <rect x="40" y="155" width="1020" height="80" rx="10" fill="url(#g1)" opacity="0.9"/>
+  <text x="550" y="180" text-anchor="middle" fill="#0f172a" font-size="14" font-weight="700">FASTAPI GATEWAY — /ws/chat · /api/orders · /api/menu · /api/tenant/*</text>
+  <text x="550" y="210" text-anchor="middle" fill="#0f172a" font-size="12">WebSocket (real-time) + REST + Auth Middleware + Rate Limiting</text>
+  <line x1="550" y1="240" x2="550" y2="275" stroke="#38bdf8" stroke-width="2" marker-end="url(#arr)"/>
+  <rect x="40" y="280" width="1020" height="70" rx="10" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+  <text x="550" y="305" text-anchor="middle" fill="#a78bfa" font-size="14" font-weight="700">ORCHESTRATOR AGENT (ADK · Qwen2.5-Coder:7b)</text>
+  <text x="550" y="330" text-anchor="middle" fill="#cbd5e1" font-size="12">Intent classification · Tool routing · Session memory · Sub-agent delegation</text>
+  <line x1="550" y1="355" x2="550" y2="390" stroke="#a78bfa" stroke-width="2" marker-end="url(#arr)"/>
+  <g font-size="12" text-anchor="middle">
+    <rect x="60"  y="395" width="200" height="70" rx="8" fill="#0b1220" stroke="#38bdf8"/><text x="160" y="420" fill="#38bdf8" font-weight="700">Menu Agent</text><text x="160" y="442" fill="#cbd5e1">RAG over ChromaDB</text>
+    <rect x="280" y="395" width="200" height="70" rx="8" fill="#0b1220" stroke="#34d399"/><text x="380" y="420" fill="#34d399" font-weight="700">Order Agent</text><text x="380" y="442" fill="#cbd5e1">Cart · Checkout state</text>
+    <rect x="500" y="395" width="200" height="70" rx="8" fill="#0b1220" stroke="#a78bfa"/><text x="600" y="420" fill="#a78bfa" font-weight="700">Payment Agent (MCP)</text><text x="600" y="442" fill="#cbd5e1">Stripe payment links</text>
+    <rect x="720" y="395" width="200" height="70" rx="8" fill="#0b1220" stroke="#fbbf24"/><text x="820" y="420" fill="#fbbf24" font-weight="700">Queue Agent</text><text x="820" y="442" fill="#cbd5e1">Real-time POS lookup</text>
+    <rect x="940" y="395" width="120" height="70" rx="8" fill="#0b1220" stroke="#94a3b8"/><text x="1000" y="420" fill="#94a3b8" font-weight="700">FAQ Agent</text><text x="1000" y="442" fill="#cbd5e1">Hours · policies</text>
+  </g>
+  <g stroke="#a78bfa" stroke-width="1.5" fill="none">
+    <path d="M 550 350 Q 160 380 160 395" marker-end="url(#arr)"/>
+    <path d="M 550 350 Q 380 380 380 395" marker-end="url(#arr)"/>
+    <path d="M 550 350 Q 600 380 600 395" marker-end="url(#arr)"/>
+    <path d="M 550 350 Q 820 380 820 395" marker-end="url(#arr)"/>
+    <path d="M 550 350 Q 1000 380 1000 395" marker-end="url(#arr)"/>
+  </g>
+  <line x1="550" y1="468" x2="550" y2="500" stroke="#34d399" stroke-width="2" marker-end="url(#arr)"/>
+  <rect x="40" y="505" width="480" height="115" rx="10" fill="#1e293b" stroke="#34d399"/>
+  <text x="280" y="530" text-anchor="middle" fill="#34d399" font-size="13" font-weight="700">DATA LAYER</text>
+  <g font-size="12" fill="#e2e8f0">
+    <text x="80" y="560">📦 ChromaDB — per-tenant vector store</text>
+    <text x="80" y="580">🐘 Postgres — tenants, orders, sessions</text>
+    <text x="80" y="600">⚡ Redis — sessions, rate limits, queue cache</text>
+  </g>
+  <rect x="560" y="505" width="500" height="115" rx="10" fill="#1e293b" stroke="#fbbf24"/>
+  <text x="810" y="530" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="700">MCP SERVERS</text>
+  <g font-size="12" fill="#e2e8f0">
+    <text x="600" y="560">💳 stripe-mcp — payment link creation</text>
+    <text x="600" y="580">🧾 pos-mcp — kitchen ticket print (optional)</text>
+    <text x="600" y="600">📊 analytics-mcp — order stats (optional)</text>
+  </g>
+</svg>
+</div>
+</section>
+
+<section id="tech">
+<h2>3. Technology Stack</h2>
+<table>
+  <thead><tr><th>Layer</th><th>Choice</th><th>Rationale</th></tr></thead>
+  <tbody>
+    <tr><td>Agent Framework</td><td><strong>Google ADK</strong></td><td>Composable agents, native tool calling, multi-agent orchestration</td></tr>
+    <tr><td>LLM</td><td><strong>Qwen2.5-Coder:7b</strong> (Ollama, local)</td><td>Strong code/reasoning, 4.7 GB, fully offline-capable</td></tr>
+    <tr><td>Embeddings</td><td><code>nomic-embed-text</code> or <code>bge-small</code></td><td>Lightweight, runs via Ollama, 768-dim</td></tr>
+    <tr><td>Vector DB</td><td><strong>ChromaDB</strong> (persistent)</td><td>Per-tenant collections, simple API, OSS</td></tr>
+    <tr><td>API</td><td><strong>FastAPI</strong> + Uvicorn</td><td>Async-native, WebSocket support, OpenAPI auto-docs</td></tr>
+    <tr><td>MCP</td><td><strong>Model Context Protocol</strong></td><td>Standardized tool server interface for Stripe/POS</td></tr>
+    <tr><td>Database</td><td>Postgres 16 + SQLAlchemy</td><td>Tenants, orders, audit log</td></tr>
+    <tr><td>Cache/Sessions</td><td>Redis 7</td><td>Live queue snapshots, session TTL, rate limits</td></tr>
+    <tr><td>Web Widget</td><td>Vanilla JS + shadow DOM</td><td>One &lt;script&gt; tag, isolated styles</td></tr>
+    <tr><td>Mobile</td><td>PWA (service worker)</td><td>No app store, installable, push notifications</td></tr>
+    <tr><td>Payments</td><td>Stripe (test mode first)</td><td>Payment Links via MCP</td></tr>
+    <tr><td>Deployment</td><td>Docker Compose → K8s later</td><td>Local dev parity with prod</td></tr>
+  </tbody>
+</table>
+</section>
+
+<section id="structure">
+<h2>4. Project Structure</h2>
+<pre><code>restaurant-chat-framework/
+├── docker-compose.yml
+├── .env.example
+├── README.md
+│
+├── core/                          # Reusable framework
+│   ├── agents/
+│   │   ├── base_agent.py          # ADK base class
+│   │   ├── orchestrator.py        # Routes intents → sub-agents
+│   │   ├── menu_agent.py
+│   │   ├── order_agent.py
+│   │   ├── payment_agent.py
+│   │   ├── queue_agent.py
+│   │   └── faq_agent.py
+│   ├── tools/
+│   │   ├── menu_tools.py          # search_menu, get_price, allergen_check
+│   │   ├── order_tools.py         # add_to_cart, remove_item, checkout
+│   │   ├── queue_tools.py         # get_queue_status, estimate_wait
+│   │   └── mcp_clients.py
+│   ├── rag/
+│   │   ├── embeddings.py          # Ollama embed wrapper
+│   │   ├── ingest.py              # menu.json → chunks → Chroma
+│   │   └── retriever.py           # top-k + metadata filter
+│   ├── state/
+│   │   ├── session.py             # Per-user session (Redis-backed)
+│   │   └── tenant.py              # Tenant config loader
+│   └── llm/
+│       └── ollama_client.py       # Async streaming client
+│
+├── api/
+│   ├── main.py                    # FastAPI app + lifespan
+│   ├── routes/
+│   │   ├── chat.py                # WebSocket /ws/chat/{tenant}
+│   │   ├── menu.py
+│   │   ├── orders.py
+│   │   └── tenant.py
+│   └── middleware/
+│       ├── auth.py                # API key / JWT
+│       └── ratelimit.py
+│
+├── tenants/                       # One folder per restaurant
+│   └── {tenant_id}/
+│       ├── config.json            # name, theme, hours, timezone
+│       ├── menu.json              # Source-of-truth menu
+│       ├── policies.md            # Refunds, allergens
+│       └── vector_store/          # Chroma persistence
+│
+├── channels/
+│   ├── web-widget/
+│   │   ├── widget.js              # Loads chat bubble
+│   │   └── widget.css
+│   ├── qr-landing/                # /r/{tenant_id}
+│   │   └── index.html
+│   └── pwa/
+│       ├── manifest.json
+│       └── sw.js
+│
+├── admin/                         # Restaurant owner UI
+│   ├── dashboard.py               # Streamlit v1, React later
+│   └── menu_uploader.py
+│
+└── mcp_servers/
+    ├── stripe_mcp/                # create_payment_link, refund
+    └── pos_mcp/                   # Optional kitchen printer
+</code></pre>
+</section>
+
+<section id="adk">
+<h2>5. ADK Agent Design</h2>
+<h3>5.1 Orchestrator — single entry point</h3>
+<pre><code># core/agents/orchestrator.py
+from adk import LlmAgent
+from .menu_agent import menu_agent
+from .order_agent import order_agent
+from .payment_agent import payment_agent
+from .queue_agent import queue_agent
+from .faq_agent import faq_agent
+
+orchestrator = LlmAgent(
+    name="restaurant_assistant",
+    model="qwen2.5-coder:7b",
+    instruction="""
+    You are the front-desk assistant for {tenant_name}.
+    Classify each user message into ONE intent and delegate:
+      MENU   -> questions about food, prices, allergens -> menu_agent
+      ORDER  -> wants to buy or pickup -> order_agent
+      PAY    -> wants to pay -> payment_agent
+      QUEUE  -> asks about wait time -> queue_agent
+      FAQ    -> hours, location, policies -> faq_agent
+
+    Always confirm the cart total and pickup time before payment.
+    Speak in {tenant_language}, be concise, friendly, never invent prices.
+    """,
+    sub_agents=[menu_agent, order_agent, payment_agent, queue_agent, faq_agent],
+)
+</code></pre>
+
+<h3>5.2 Menu Agent — RAG-powered</h3>
+<pre><code># core/agents/menu_agent.py
+from adk import LlmAgent
+from core.tools.menu_tools import search_menu, get_item_details
+
+menu_agent = LlmAgent(
+    name="menu",
+    model="qwen2.5-coder:7b",
+    tools=[search_menu, get_item_details],
+    instruction="""
+    Answer questions about {tenant_name}'s menu.
+    Use search_menu for discovery, get_item_details for specifics.
+    Always include price and category in your answer.
+    Never recommend items not in the menu.
+    """,
+)
+</code></pre>
+
+<h3>5.3 Order Agent — stateful cart</h3>
+<pre><code># core/agents/order_agent.py
+order_agent = LlmAgent(
+    name="order",
+    model="qwen2.5-coder:7b",
+    tools=["add_to_cart", "remove_from_cart", "view_cart",
+           "set_pickup_time", "checkout"],
+    instruction="""
+    Help the customer build an order. Always:
+      1. Confirm items + quantities
+      2. Compute total using ONLY menu prices
+      3. Confirm pickup time
+      4. Hand off to payment_agent for checkout
+    """,
+)
+</code></pre>
+
+<h3>5.4 Payment Agent — MCP-driven</h3>
+<pre><code># core/agents/payment_agent.py
+payment_agent = LlmAgent(
+    name="payment",
+    model="qwen2.5-coder:7b",
+    tools=[mcp_tool("stripe", "create_payment_link")],
+    instruction="""
+    Generate a Stripe payment link for the session cart total.
+    Return the URL to the customer. Do not invent amounts.
+    """,
+)
+</code></pre>
+</section>
+
+<section id="rag">
+<h2>6. RAG &amp; Vector DB Layer</h2>
+<h3>6.1 Menu ingestion (one-time per tenant)</h3>
+<pre><code># core/rag/ingest.py
+import chromadb, json
+from .embeddings import embed
+
+def ingest_menu(tenant_id: str, menu_path: str):
+    client = chromadb.PersistentClient(path=f"tenants/{tenant_id}/vector_store")
+    coll = client.get_or_create_collection(f"menu_{tenant_id}")
+
+    menu = json.load(open(menu_path))
+    docs, metas, ids, embs = [], [], [], []
+
+    for item in menu["items"]:
+        text = (f"{item['name']}. {item['description']}. "
+                f"Price: $%7Bitem['price']%7D. Category: {item['category']}. "
+                f"Allergens: %7B', '.join(item.get('allergens', []))%7D.")
+        docs.append(text)
+        metas.append({"price": item["price"],
+                      "category": item["category"],
+                      "available": item.get("available", True)})
+        ids.append(item["id"])
+        embs.append(embed(text))
+
+    coll.upsert(documents=docs, metadatas=metas, ids=ids, embeddings=embs)
+    return coll.count()
+</code></pre>
+
+<h3>6.2 Retriever with metadata filters</h3>
+<pre><code># core/rag/retriever.py
+def retrieve(tenant_id: str, query: str, k: int = 5,
+             category: str | None = None, max_price: float | None = None):
+    coll = get_collection(tenant_id)
+    where = {"available": True}
+    if category: where["category"] = category
+    if max_price: where["price"] = {"$lte": max_price}
+
+    return coll.query(
+        query_embeddings=[embed(query)],
+        n_results=k,
+        where=where,
+    )
+</code></pre>
+<div class="note">
+<strong>Why chunk per menu item?</strong> Each item is a self-contained fact (~50–80 tokens). Items rarely need splitting, and metadata filtering by category/price becomes trivial.
+</div>
+</section>
+
+<section id="state">
+<h2>7. State &amp; Session Management</h2>
+<table>
+  <thead><tr><th>State</th><th>Where</th><th>TTL</th></tr></thead>
+  <tbody>
+    <tr><td>Cart (per session)</td><td>Redis hash <code>cart:{session_id}</code></td><td>30 min idle</td></tr>
+    <tr><td>Conversation history</td><td>Redis list <code>msgs:{session_id}</code> (sliding window 20)</td><td>30 min</td></tr>
+    <tr><td>Tenant config</td><td>Postgres + Redis cache</td><td>1 hour cache</td></tr>
+    <tr><td>Orders (completed)</td><td>Postgres</td><td>forever</td></tr>
+    <tr><td>Queue snapshot</td><td>Redis pub/sub from POS</td><td>live</td></tr>
+  </tbody>
+</table>
+<pre><code># core/state/session.py
+class Session:
+    def __init__(self, session_id: str, tenant_id: str):
+        self.id = session_id
+        self.tenant = tenant_id
+        self.redis = get_redis()
+
+    @property
+    def cart(self):
+        return json.loads(self.redis.get(f"cart:{self.id}") or "[]")
+
+    def add(self, item_id: str, qty: int, price: float):
+        cart = self.cart
+        cart.append({"item_id": item_id, "qty": qty, "price": price})
+        self.redis.setex(f"cart:{self.id}", 1800, json.dumps(cart))
+</code></pre>
+</section>
+
+<section id="api">
+<h2>8. API Layer (FastAPI)</h2>
+<h3>8.1 WebSocket chat endpoint</h3>
+<pre><code># api/routes/chat.py
+from fastapi import APIRouter, WebSocket, Query
+from core.agents.orchestrator import orchestrator
+from core.state.session import Session
+
+router = APIRouter()
+
+@router.websocket("/ws/chat/{tenant_id}")
+async def chat(ws: WebSocket, tenant_id: str,
+               session_id: str = Query(...)):
+    await ws.accept()
+    sess = Session(session_id, tenant_id)
+
+    while True:
+        user_msg = await ws.receive_text()
+
+        result = await orchestrator.run(
+            message=user_msg,
+            context={"session": sess, "tenant_id": tenant_id},
+        )
+
+        await ws.send_json({
+            "text": result.text,
+            "cart": sess.cart,
+            "actions": result.tool_calls,   # UI buttons (e.g. "Pay $24.50")
+        })
+</code></pre>
+
+<h3>8.2 REST endpoints</h3>
+<pre><code>POST   /api/tenant                     # create tenant (admin)
+GET    /api/menu/{tenant_id}          # public menu JSON
+POST   /api/orders/{tenant_id}        # create order
+GET    /api/orders/{tenant_id}/{id}   # order status
+POST   /api/webhook/stripe            # Stripe payment confirmation
+GET    /api/queue/{tenant_id}         # current queue length + ETA
+</code></pre>
+</section>
+
+<section id="mcp">
+<h2>9. MCP Servers (Payments, POS, More)</h2>
+<h3>9.1 Stripe MCP — payment links</h3>
+<pre><code># mcp_servers/stripe_mcp/server.py
+from mcp.server import Server
+from mcp.types import Tool, TextContent
+import stripe, os
+
+server = Server("stripe")
+stripe.api_key = os.environ["STRIPE_SECRET_KEY"]
+
+@server.tool()
+async def create_payment_link(amount_cents: int,
+                              description: str,
+                              metadata: dict) -> list[TextContent]:
+    link = stripe.PaymentLink.create(
+        line_items=[{
+            "price_data": {
+                "currency": "usd",
+                "product_data": {"name": description},
+                "unit_amount": amount_cents,
+            },
+            "quantity": 1,
+        }],
+        metadata=metadata,
+    )
+    return [TextContent(type="text", text=link.url)]
+</code></pre>
+
+<h3>9.2 Adding more MCP servers</h3>
+<p>Each new capability = a new MCP server. The agent discovers tools automatically:</p>
+<ul>
+  <li><span class="tag green">pos-mcp</span> push orders to Square / Toast / kitchen printer</li>
+  <li><span class="tag">sms-mcp</span> Twilio "your order is ready" notifications</li>
+  <li><span class="tag warn">analytics-mcp</span> daily sales summaries</li>
+</ul>
+</section>
+
+<section id="channels">
+<h2>10. Customer Channels</h2>
+<h3>10.1 Drop-in Web Widget (any restaurant site)</h3>
+<pre><code>&lt;!-- Restaurant website adds this single line --&gt;
+&lt;script src="https://chat.restaurant.com/widget.js"
+        data-tenant="pasta-palace"
+        data-position="bottom-right"&gt;&lt;/script&gt;
+</code></pre>
+<p>The widget creates an isolated shadow-DOM chat bubble. Loads only after page idle. No impact on Core Web Vitals.</p>
+
+<h3>10.2 QR Code Landing</h3>
+<p>Static URL → <code>https://chat.restaurant.com/r/{tenant_id}</code></p>
+<ul>
+  <li>Print QR on table tents, receipts, takeout bags</li>
+  <li>Landing page auto-detects language, shows menu highlights, opens chat</li>
+</ul>
+
+<h3>10.3 Mobile PWA</h3>
+<ul>
+  <li>Installable from QR landing (Add to Home Screen)</li>
+  <li>Service worker caches menu for offline browsing</li>
+  <li>Push notifications when order is ready (via web-push + VAPID)</li>
+</ul>
+</section>
+
+<section id="multitenant">
+<h2>11. Multi-Tenant Strategy</h2>
+<div class="grid grid-2">
+  <div class="card">
+    <h4>Tenant isolation</h4>
+    <ul>
+      <li>Each tenant gets a folder under <code>tenants/</code></li>
+      <li>ChromaDB collection name = <code>menu_{tenant_id}</code></li>
+      <li>Postgres row-level filter on <code>tenant_id</code> for orders</li>
+      <li>Redis keys prefixed with tenant</li>
+    </ul>
+  </div>
+  <div class="card purple">
+    <h4>Onboarding a new restaurant</h4>
+    <ol>
+      <li>Generate <code>tenant_id</code> (UUID)</li>
+      <li>Create folder, drop <code>menu.json</code> + <code>config.json</code></li>
+      <li>Run <code>python -m core.rag.ingest {tenant_id}</code></li>
+      <li>Issue API key, point Stripe account</li>
+      <li>Give them the widget snippet + QR PNG</li>
+    </ol>
+    <p style="color: var(--muted); margin-bottom: 0;">⏱️ Total time: ~15–30 minutes.</p>
+  </div>
+</div>
+
+<h3>Config &amp; menu schemas</h3>
+<pre><code>// tenants/{id}/config.json
+{
+  "tenant_id": "pasta-palace",
+  "name": "Pasta Palace",
+  "currency": "USD",
+  "language": "en",
+  "timezone": "America/New_York",
+  "theme": { "primary": "#e85d2c", "logo_url": "..." },
+  "hours": { "mon-fri": "11:00-22:00", "sat-sun": "12:00-23:00" }
+}
+
+// tenants/{id}/menu.json (excerpt)
+{
+  "items": [
+    {
+      "id": "margherita",
+      "name": "Margherita Pizza",
+      "description": "Tomato, fresh mozzarella, basil",
+      "price": 14.50,
+      "category": "pizza",
+      "allergens": ["gluten", "dairy"],
+      "available": true
+    }
+  ]
+}
+</code></pre>
+</section>
+
+<section id="security">
+<h2>12. Security &amp; Observability</h2>
+<div class="grid grid-2">
+  <div class="card">
+    <h4>🔒 Security</h4>
+    <ul>
+      <li><strong>Tenant auth</strong> — API key per restaurant; widget sends hashed key</li>
+      <li><strong>Session tokens</strong> — short-lived JWT for customer sessions</li>
+      <li><strong>Rate limits</strong> — 30 msg/min per session via Redis token bucket</li>
+      <li><strong>PII</strong> — never log full prompts; redact phone/email in transcripts</li>
+      <li><strong>Stripe webhook</strong> — verify signature; idempotency keys</li>
+      <li><strong>MCP isolation</strong> — each tenant's MCP server uses their own Stripe account</li>
+    </ul>
+  </div>
+  <div class="card green">
+    <h4>📈 Observability</h4>
+    <ul>
+      <li>Structured JSON logs (structlog) → stdout → Loki</li>
+      <li>OpenTelemetry traces for each agent tool call</li>
+      <li>Langfuse (optional) for LLM trace inspection</li>
+      <li>Prometheus metrics: orders/day, p95 latency, tool error rates</li>
+      <li>Cost guardrails — token usage per tenant, alerts at thresholds</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<section id="deploy">
+<h2>13. Deployment</h2>
+<h3>13.1 docker-compose.yml (local + single-VPS prod)</h3>
+<pre><code>version: '3.9'
+services:
+  api:
+    build: ./api
+    ports: ["8000:8000"]
+    env_file: .env
+    depends_on: [postgres, redis, ollama, chroma]
+
+  ollama:
+    image: ollama/ollama
+    ports: ["11434:11434"]
+    volumes: ["ollama_data:/root/.ollama"]
+    # first boot: docker exec ollama ollama pull qwen2.5-coder:7b
+
+  chroma:
+    image: chromadb/chroma:latest
+    ports: ["8001:8000"]
+    volumes: ["chroma_data:/chroma/chroma"]
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: chat
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+    volumes: ["pg_data:/var/lib/postgresql/data"]
+
+  redis:
+    image: redis:7-alpine
+
+  stripe-mcp:
+    build: ./mcp_servers/stripe_mcp
+    env_file: .env
+
+  nginx:
+    image: nginx:alpine
+    ports: ["80:80", "443:443"]
+    volumes: ["./nginx.conf:/etc/nginx/nginx.conf", "./certs:/etc/nginx/certs"]
+    depends_on: [api]
+
+volumes:
+  ollama_data: chroma_data: pg_data:
+</code></pre>
+
+<h3>13.2 Scaling path</h3>
+<ol>
+  <li><strong>Phase 0–1:</strong> Single VPS, all containers, Ollama on same host (GPU optional)</li>
+  <li><strong>Phase 2:</strong> Move Ollama to dedicated GPU box, keep API stateless behind load balancer</li>
+  <li><strong>Phase 3:</strong> Horizontal API replicas, Chroma cluster mode, Postgres → managed (RDS/Neon)</li>
+  <li><strong>Phase 4:</strong> Replace local Qwen with hosted LLM (OpenAI/Anthropic) via LiteLLM proxy — drop-in</li>
+</ol>
+</section>
+
+<section id="phases">
+<h2>14. Phased Roadmap</h2>
+<div class="phase"><div class="phase-num">1</div><div><strong>Foundation</strong> — FastAPI + Ollama + ADK + one tenant, one channel (web widget). RAG working with a sample menu. End-to-end: ask menu → place order → Stripe test link.</div></div>
+<div class="phase"><div class="phase-num">2</div><div><strong>Multi-tenant core</strong> — Tenant folder structure, ingestion pipeline, auth middleware, admin dashboard (upload menu JSON/CSV → vectorize).</div></div>
+<div class="phase"><div class="phase-num">3</div><div><strong>All channels</strong> — QR landing page, PWA manifest + service worker, push notifications for order ready.</div></div>
+<div class="phase"><div class="phase-num">4</div><div><strong>Queue &amp; POS integration</strong> — Real-time queue from POS (or manual kiosk). Optional pos-mcp to push tickets to kitchen printer.</div></div>
+<div class="phase"><div class="phase-num">5</div><div><strong>Hardening</strong> — Rate limiting, observability, security audit, load test, multi-region deploy.</div></div>
+<div class="phase"><div class="phase-num">6</div><div><strong>Voice (optional)</strong> — Whisper STT + browser TTS so customers can talk instead of type.</div></div>
+
+<h3>Per-phase deliverables &amp; acceptance criteria</h3>
+<table>
+  <thead><tr><th>Phase</th><th>Deliverable</th><th>Acceptance</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Working chat on local</td><td>User asks menu → gets 3 items + prices → adds 1 → receives Stripe test link → completes payment (test mode)</td></tr>
+    <tr><td>2</td><td>2nd tenant in &lt; 30 min</td><td>Drop menu.json, run ingest, get a working chat with no code changes</td></tr>
+    <tr><td>3</td><td>QR → PWA flow</td><td>Scan QR on phone → install PWA → place order → push notif "ready"</td></tr>
+    <tr><td>4</td><td>Live queue</td><td>User asks "how long?" → correct ETA from POS within ±2 min</td></tr>
+    <tr><td>5</td><td>Production-ready</td><td>p95 latency &lt; 2s, 100 concurrent users, zero data leaks across tenants</td></tr>
+  </tbody>
+</table>
+</section>
+
+<section id="checklist">
+<h2>15. Pre-Build Checklist</h2>
+<p>Confirm these before writing code:</p>
+<div class="panel">
+<ul class="checklist">
+  <li>Decide on language(s) for menu + chat (English first, multi-lang later)</li>
+  <li>Get Stripe test account → secret key + webhook secret</li>
+  <li>Confirm embedding model runs on your hardware (CPU OK at small scale)</li>
+  <li>Decide on Postgres hosting (Docker locally, Neon/Supabase in prod)</li>
+  <li>Buy/point a domain (e.g. <code>chat.yourcompany.com</code>) + TLS cert</li>
+  <li>Design the menu JSON schema (see §11) — get buy-in from a pilot restaurant</li>
+  <li>Choose vector DB host path: per-tenant folder vs single Chroma with namespacing</li>
+  <li>Decide on observability stack (start simple: JSON logs + Grafana Cloud free tier)</li>
+  <li>Pick a notification provider for order-ready (web-push first, SMS via Twilio later)</li>
+  <li>Draft the system prompt for the orchestrator with one pilot restaurant's voice</li>
+</ul>
+</div>
+
+<div class="warn-box">
+<strong>⚠️ Gotchas to avoid</strong>
+<ul>
+  <li>Don't let the LLM invent prices — always require a tool call to look up price</li>
+  <li>Never trust client-side cart totals — recompute server-side at checkout</li>
+  <li>Stripe webhook must be idempotent (payment intent can fire twice)</li>
+  <li>Ollama cold-start is slow (~3s) — keep API process warm, pre-load model</li>
+  <li>Chroma persists per folder — back up <code>tenants/</code> directory regularly</li>
+</ul>
+</div>
+
+<h2>🎬 Next Step</h2>
+<p>Ready to start building? The recommended first move is <strong>Phase 1</strong>: scaffold the project, get one tenant's menu ingested, and prove the chat → order → Stripe flow works end-to-end on your machine.</p>
+<p>Open the file directly in any browser to view, share, or print this plan.</p>
+</section>
+
+<footer>
+  <p>Restaurant Chat Framework — Architecture Plan</p>
+  <p style="margin-top:8px;">Stack: ADK · Qwen2.5-Coder · FastAPI · ChromaDB · MCP · Stripe · Docker</p>
+</footer>
+
+</div>
+</body>
+</html>
