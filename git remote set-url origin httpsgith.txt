@@ -1,8 +1,0 @@
-git remote set-url origin https://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@github.com/varunmurthymokarala/Multi_ADK_PROJ.git
-
-> $env:OLLAMA_NO_CLOUD=1 
-
-$env:OLLAMA_HOST="127.0.0.1:11434" 
-
-ollama run qwen2.5-coder:7b 
-
