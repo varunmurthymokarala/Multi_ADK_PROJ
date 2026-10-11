@@ -1,0 +1,159 @@
+{
+  "items": [
+    {
+      "id": "chips-and-salsa",
+      "name": "Chips and Salsa",
+      "description": "Warm tortilla chips with roasted tomato salsa",
+      "price": 4.5,
+      "category": "starters",
+      "allergens": [
+        "gluten"
+      ],
+      "tags": [
+        "vegan",
+        "vegetarian"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1613514785940-daed07799d9b?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "guacamole",
+      "name": "Guacamole",
+      "description": "Hand-mashed avocado with lime, cilantro, and serrano",
+      "price": 7.5,
+      "category": "starters",
+      "allergens": [],
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "gluten-free",
+        "spicy"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1600658984051-8d9a9b6a1f5f?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "chicken-tacos",
+      "name": "Chicken Tacos",
+      "description": "Three corn tortillas with adobo chicken, onion, and cilantro",
+      "price": 11.5,
+      "category": "tacos",
+      "allergens": [],
+      "tags": [
+        "gluten-free",
+        "spicy"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "beef-al-pastor",
+      "name": "Beef Al Pastor",
+      "description": "Marinated beef with grilled pineapple, onion, and salsa roja",
+      "price": 12.0,
+      "category": "tacos",
+      "allergens": [],
+      "tags": [
+        "gluten-free",
+        "spicy"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "bean-burrito",
+      "name": "Bean Burrito",
+      "description": "Pinto beans, rice, cheese, and pico wrapped in a flour tortilla",
+      "price": 10.0,
+      "category": "burritos",
+      "allergens": [
+        "gluten",
+        "dairy"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "carne-asada-burrito",
+      "name": "Carne Asada Burrito",
+      "description": "Grilled steak, rice, beans, cheese, and guacamole",
+      "price": 13.5,
+      "category": "burritos",
+      "allergens": [
+        "gluten",
+        "dairy"
+      ],
+      "tags": [],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1584208632869-05fa2b2a5934?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "veggie-quesadilla",
+      "name": "Veggie Quesadilla",
+      "description": "Flour tortilla with peppers, onion, corn, and melted cheese",
+      "price": 9.5,
+      "category": "mains",
+      "allergens": [
+        "gluten",
+        "dairy"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1618040996337-56904b7850b9?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "elote",
+      "name": "Elote",
+      "description": "Grilled corn with cotija, chili, lime, and crema",
+      "price": 5.5,
+      "category": "sides",
+      "allergens": [
+        "dairy"
+      ],
+      "tags": [
+        "vegetarian",
+        "gluten-free",
+        "spicy"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "churros",
+      "name": "Churros",
+      "description": "Cinnamon-sugar churros with dark chocolate dipping sauce",
+      "price": 6.5,
+      "category": "desserts",
+      "allergens": [
+        "gluten",
+        "dairy"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1624371414361-e670edf4898d?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "horchata",
+      "name": "Horchata",
+      "description": "Chilled rice cinnamon drink with vanilla",
+      "price": 4.0,
+      "category": "drinks",
+      "allergens": [
+        "dairy"
+      ],
+      "tags": [
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=800&q=80&auto=format&fit=crop"
+    }
+  ]
+}

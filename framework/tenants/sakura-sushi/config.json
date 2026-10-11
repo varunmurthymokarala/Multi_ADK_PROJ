@@ -1,0 +1,15 @@
+{
+  "name": "Sakura Sushi",
+  "currency": "USD",
+  "language": "en",
+  "timezone": "America/Chicago",
+  "theme": {"primary": "#be123c"},
+  "hours": {"daily": "11:30-22:00"},
+  "eta_minutes": 25,
+  "tagline": "McKinney - Japanese kitchen",
+  "blurb": "Hand rolls, nigiri, and donburi made to order. Order ahead, skip the line.",
+  "address": "McKinney, Texas",
+  "phone": "(555) 234-5678",
+  "hours_text": "11:30 AM - 10:00 PM daily",
+  "open_till": "10:00 PM"
+}

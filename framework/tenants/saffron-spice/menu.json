@@ -1,45 +1,643 @@
 {
   "items": [
-    {"id": "vegetable-samosa", "name": "Vegetable Samosa", "description": "Crisp pastry with spiced potato and peas, served with tamarind chutney", "price": 6.50, "category": "starters", "allergens": ["gluten"], "tags": ["vegan", "vegetarian"], "available": true},
-    {"id": "paneer-tikka", "name": "Paneer Tikka", "description": "Char-grilled cottage cheese with peppers and house spices", "price": 11.50, "category": "starters", "allergens": ["dairy"], "tags": ["vegetarian", "gluten-free"], "available": true},
-    {"id": "chicken-tikka", "name": "Chicken Tikka", "description": "Yogurt-marinated chicken grilled in the tandoor", "price": 12.50, "category": "starters", "allergens": ["dairy"], "tags": ["gluten-free"], "available": true},
-    {"id": "onion-bhaji", "name": "Onion Bhaji", "description": "Crispy onion fritters with mint chutney", "price": 7.00, "category": "starters", "allergens": ["gluten"], "tags": ["vegan", "vegetarian"], "available": true},
-    {"id": "butter-chicken", "name": "Butter Chicken", "description": "Tandoori chicken in a velvety tomato, butter, and fenugreek sauce", "price": 18.50, "category": "curries", "allergens": ["dairy"], "available": true},
-    {"id": "chicken-vindaloo", "name": "Chicken Vindaloo", "description": "Tangy Goan curry with potato and a lively chili kick", "price": 18.00, "category": "curries", "allergens": [], "tags": ["gluten-free", "spicy"], "available": true},
-    {"id": "lamb-rogan-josh", "name": "Lamb Rogan Josh", "description": "Slow-braised lamb in a fragrant Kashmiri chili and cardamom gravy", "price": 21.00, "category": "curries", "allergens": [], "tags": ["gluten-free"], "available": true},
-    {"id": "palak-paneer", "name": "Palak Paneer", "description": "Paneer cubes in a creamy spinach and garlic curry", "price": 16.50, "category": "curries", "allergens": ["dairy"], "tags": ["vegetarian", "gluten-free"], "available": true},
-    {"id": "chana-masala", "name": "Chana Masala", "description": "Chickpeas simmered with tomato, ginger, and warming spices", "price": 14.50, "category": "curries", "allergens": [], "tags": ["vegan", "vegetarian", "gluten-free"], "available": true},
-    {"id": "dal-makhani", "name": "Dal Makhani", "description": "Slow-cooked black lentils finished with butter and cream", "price": 15.00, "category": "curries", "allergens": ["dairy"], "tags": ["vegetarian", "gluten-free"], "available": true},
-    {"id": "vegetable-biryani", "name": "Vegetable Biryani", "description": "Fragrant basmati rice with seasonal vegetables, saffron, and fried onions", "price": 16.00, "category": "rice", "allergens": [], "tags": ["vegan", "vegetarian", "gluten-free"], "available": true},
-    {"id": "chicken-biryani", "name": "Chicken Biryani", "description": "Layered basmati rice with tender chicken, saffron, and aromatic spices", "price": 19.50, "category": "rice", "allergens": [], "tags": ["gluten-free"], "available": true},
-    {"id": "garlic-naan", "name": "Garlic Naan", "description": "Tandoor-baked flatbread brushed with garlic butter and cilantro", "price": 4.50, "category": "breads", "allergens": ["gluten", "dairy"], "tags": ["vegetarian"], "available": true},
-    {"id": "tandoori-roti", "name": "Tandoori Roti", "description": "Whole-wheat flatbread baked in the tandoor", "price": 3.50, "category": "breads", "allergens": ["gluten"], "tags": ["vegan", "vegetarian"], "available": true},
-    {"id": "gulab-jamun", "name": "Gulab Jamun", "description": "Milk dumplings in cardamom and rose syrup", "price": 6.50, "category": "desserts", "allergens": ["dairy", "gluten"], "tags": ["vegetarian"], "available": true},
-    {"id": "mango-lassi", "name": "Mango Lassi", "description": "Chilled mango yogurt drink with a touch of cardamom", "price": 5.50, "category": "drinks", "allergens": ["dairy"], "tags": ["vegetarian", "gluten-free"], "available": true},
-    {"id": "masala-chai", "name": "Masala Chai", "description": "Spiced Indian tea brewed with milk", "price": 4.00, "category": "drinks", "allergens": ["dairy"], "tags": ["vegetarian", "gluten-free"], "available": true},
-    {"id": "poha", "name": "Poha", "description": "Flattened rice with mustard seeds, peanuts, turmeric, and fresh cilantro", "price": 8.50, "category": "breakfast", "allergens": ["peanut"], "tags": ["vegan", "vegetarian", "gluten-free"], "available": true},
-    {"id": "upma", "name": "Upma", "description": "Semolina roasted with mustard seeds, curry leaves, and mixed vegetables", "price": 8.00, "category": "breakfast", "allergens": ["gluten"], "tags": ["vegetarian"], "available": true},
-    {"id": "idli-sambar", "name": "Idli Sambar", "description": "Steamed rice-lentil cakes served with lentil stew and coconut chutney", "price": 9.00, "category": "breakfast", "allergens": [], "tags": ["vegan", "vegetarian", "gluten-free"], "available": true},
-    {"id": "masala-dosa", "name": "Masala Dosa", "description": "Crisp rice crepe filled with spiced potato, served with sambar and chutney", "price": 11.50, "category": "breakfast", "allergens": [], "tags": ["vegan", "vegetarian", "gluten-free"], "available": true},
-    {"id": "aloo-paratha", "name": "Aloo Paratha", "description": "Whole-wheat flatbread stuffed with spiced potato, served with yogurt and pickle", "price": 10.00, "category": "breakfast", "allergens": ["gluten", "dairy"], "tags": ["vegetarian"], "available": true},
-    {"id": "kadhai-paneer", "name": "Kadhai Paneer", "description": "Paneer and peppers tossed in a smoky roasted-coriander and chili gravy", "price": 17.00, "category": "curries", "allergens": ["dairy"], "tags": ["vegetarian", "gluten-free", "spicy"], "available": true},
-    {"id": "malai-kofta", "name": "Malai Kofta", "description": "Paneer and potato dumplings in a creamy cashew and tomato gravy", "price": 17.50, "category": "curries", "allergens": ["dairy", "tree-nut"], "tags": ["vegetarian", "gluten-free"], "available": true},
-    {"id": "mushroom-do-pyaza", "name": "Mushroom Do Pyaza", "description": "Button mushrooms and pearl onions in a tomato-onion masala", "price": 15.50, "category": "curries", "allergens": [], "tags": ["vegan", "vegetarian", "gluten-free"], "available": true},
-    {"id": "veg-kheema", "name": "Veg Kheema", "description": "Spiced crumbled soy and peas served with pav, a Maharashtrian favorite", "price": 14.00, "category": "curries", "allergens": ["soy", "gluten"], "tags": ["vegan", "vegetarian"], "available": true},
-    {"id": "hyderabadi-veg-biryani", "name": "Hyderabadi Veg Biryani", "description": "Slow-dum biryani with vegetables, fried onions, and saffron", "price": 17.00, "category": "rice", "allergens": [], "tags": ["vegan", "vegetarian", "gluten-free"], "available": true},
-    {"id": "veg-manchurian", "name": "Veg Manchurian", "description": "Crisp vegetable dumplings in a tangy ginger-soy-chili sauce", "price": 12.50, "category": "indo-chinese", "allergens": ["gluten", "soy"], "tags": ["vegetarian"], "available": true},
-    {"id": "hakka-noodles", "name": "Hakka Noodles", "description": "Stir-fried noodles with cabbage, peppers, and scallions in a light soy glaze", "price": 13.00, "category": "indo-chinese", "allergens": ["gluten", "soy"], "tags": ["vegetarian"], "available": true},
-    {"id": "chilli-paneer", "name": "Chilli Paneer", "description": "Crisp paneer tossed with peppers, onion, and a sweet-chili glaze", "price": 14.00, "category": "indo-chinese", "allergens": ["dairy", "gluten", "soy"], "tags": ["vegetarian", "spicy"], "available": true},
-    {"id": "vada-pav", "name": "Vada Pav", "description": "Spiced potato fritter in a soft bun with garlic and green chutney", "price": 6.00, "category": "street-food", "allergens": ["gluten"], "tags": ["vegan", "vegetarian"], "available": true},
-    {"id": "pav-bhaji", "name": "Pav Bhaji", "description": "Buttered mixed-vegetable mash served with toasted pav and onions", "price": 12.00, "category": "street-food", "allergens": ["gluten", "dairy"], "tags": ["vegetarian"], "available": true},
-    {"id": "bhel-puri", "name": "Bhel Puri", "description": "Puffed rice, sev, onion, and tamarind tossed together for a tangy crunch", "price": 7.50, "category": "street-food", "allergens": ["gluten"], "tags": ["vegetarian"], "available": true},
-    {"id": "raita", "name": "Raita", "description": "Whipped yogurt with cucumber, mint, and roasted cumin", "price": 3.50, "category": "sides", "allergens": ["dairy"], "tags": ["vegetarian", "gluten-free"], "available": true},
-    {"id": "papad", "name": "Papad", "description": "Roasted crisp lentil wafer, perfect with any meal", "price": 2.00, "category": "sides", "allergens": [], "tags": ["vegan", "vegetarian", "gluten-free"], "available": true},
-    {"id": "indian-pickle", "name": "Indian Pickle", "description": "Mango and lime pickle, tangy and spicy", "price": 2.50, "category": "sides", "allergens": [], "tags": ["vegan", "vegetarian", "gluten-free"], "available": true},
-    {"id": "rasmalai", "name": "Rasmalai", "description": "Soft paneer discs soaked in saffron and cardamom milk", "price": 7.00, "category": "desserts", "allergens": ["dairy"], "tags": ["vegetarian", "gluten-free"], "available": true},
-    {"id": "kulfi", "name": "Kulfi", "description": "Dense, slow-frozen pistachio and cardamom ice cream", "price": 6.00, "category": "desserts", "allergens": ["dairy", "tree-nut"], "tags": ["vegetarian", "gluten-free"], "available": true},
-    {"id": "nimbu-pani", "name": "Nimbu Pani", "description": "Freshly squeezed lemonade with mint, black salt, and a hint of cumin", "price": 4.50, "category": "drinks", "allergens": [], "tags": ["vegan", "vegetarian", "gluten-free"], "available": true},
-    {"id": "jaljeera", "name": "Jaljeera", "description": "Cumin and black-salt cooler with lemon and mint", "price": 4.50, "category": "drinks", "allergens": [], "tags": ["vegan", "vegetarian", "gluten-free"], "available": true},
-    {"id": "thandai", "name": "Thandai", "description": "Chilled spiced almond and rose milk with saffron and peppercorns", "price": 6.00, "category": "drinks", "allergens": ["dairy", "tree-nut"], "tags": ["vegetarian", "gluten-free"], "available": true}
+    {
+      "id": "vegetable-samosa",
+      "name": "Vegetable Samosa",
+      "description": "Crisp pastry with spiced potato and peas, served with tamarind chutney",
+      "price": 6.5,
+      "category": "starters",
+      "allergens": [
+        "gluten"
+      ],
+      "tags": [
+        "vegan",
+        "vegetarian"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "paneer-tikka",
+      "name": "Paneer Tikka",
+      "description": "Char-grilled cottage cheese with peppers and house spices",
+      "price": 11.5,
+      "category": "starters",
+      "allergens": [
+        "dairy"
+      ],
+      "tags": [
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d6?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "chicken-tikka",
+      "name": "Chicken Tikka",
+      "description": "Yogurt-marinated chicken grilled in the tandoor",
+      "price": 12.5,
+      "category": "starters",
+      "allergens": [
+        "dairy"
+      ],
+      "tags": [
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "onion-bhaji",
+      "name": "Onion Bhaji",
+      "description": "Crispy onion fritters with mint chutney",
+      "price": 7.0,
+      "category": "starters",
+      "allergens": [
+        "gluten"
+      ],
+      "tags": [
+        "vegan",
+        "vegetarian"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "butter-chicken",
+      "name": "Butter Chicken",
+      "description": "Tandoori chicken in a velvety tomato, butter, and fenugreek sauce",
+      "price": 18.5,
+      "category": "curries",
+      "allergens": [
+        "dairy"
+      ],
+      "available": true,
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken%20makhani.jpg?width=800"
+    },
+    {
+      "id": "chicken-vindaloo",
+      "name": "Chicken Vindaloo",
+      "description": "Tangy Goan curry with potato and a lively chili kick",
+      "price": 18.0,
+      "category": "curries",
+      "allergens": [],
+      "tags": [
+        "gluten-free",
+        "spicy"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "lamb-rogan-josh",
+      "name": "Lamb Rogan Josh",
+      "description": "Slow-braised lamb in a fragrant Kashmiri chili and cardamom gravy",
+      "price": 21.0,
+      "category": "curries",
+      "allergens": [],
+      "tags": [
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1545247181-516773c7544a?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "palak-paneer",
+      "name": "Palak Paneer",
+      "description": "Paneer cubes in a creamy spinach and garlic curry",
+      "price": 16.5,
+      "category": "curries",
+      "allergens": [
+        "dairy"
+      ],
+      "tags": [
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "chana-masala",
+      "name": "Chana Masala",
+      "description": "Chickpeas simmered with tomato, ginger, and warming spices",
+      "price": 14.5,
+      "category": "curries",
+      "allergens": [],
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1626132647523-66f5bf380027?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "dal-makhani",
+      "name": "Dal Makhani",
+      "description": "Slow-cooked black lentils finished with butter and cream",
+      "price": 15.0,
+      "category": "curries",
+      "allergens": [
+        "dairy"
+      ],
+      "tags": [
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "vegetable-biryani",
+      "name": "Vegetable Biryani",
+      "description": "Fragrant basmati rice with seasonal vegetables, saffron, and fried onions",
+      "price": 16.0,
+      "category": "rice",
+      "allergens": [],
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hyderabadi%20Veg%20Biryani.jpg?width=800"
+    },
+    {
+      "id": "chicken-biryani",
+      "name": "Chicken Biryani",
+      "description": "Layered basmati rice with tender chicken, saffron, and aromatic spices",
+      "price": 19.5,
+      "category": "rice",
+      "allergens": [],
+      "tags": [
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken%20Biryani.jpg?width=800"
+    },
+    {
+      "id": "garlic-naan",
+      "name": "Garlic Naan",
+      "description": "Tandoor-baked flatbread brushed with garlic butter and cilantro",
+      "price": 4.5,
+      "category": "breads",
+      "allergens": [
+        "gluten",
+        "dairy"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "tandoori-roti",
+      "name": "Tandoori Roti",
+      "description": "Whole-wheat flatbread baked in the tandoor",
+      "price": 3.5,
+      "category": "breads",
+      "allergens": [
+        "gluten"
+      ],
+      "tags": [
+        "vegan",
+        "vegetarian"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "gulab-jamun",
+      "name": "Gulab Jamun",
+      "description": "Milk dumplings in cardamom and rose syrup",
+      "price": 6.5,
+      "category": "desserts",
+      "allergens": [
+        "dairy",
+        "gluten"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1666190092159-3171cf0fbb12?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "mango-lassi",
+      "name": "Mango Lassi",
+      "description": "Chilled mango yogurt drink with a touch of cardamom",
+      "price": 5.5,
+      "category": "drinks",
+      "allergens": [
+        "dairy"
+      ],
+      "tags": [
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "masala-chai",
+      "name": "Masala Chai",
+      "description": "Spiced Indian tea brewed with milk",
+      "price": 4.0,
+      "category": "drinks",
+      "allergens": [
+        "dairy"
+      ],
+      "tags": [
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "poha",
+      "name": "Poha",
+      "description": "Flattened rice with mustard seeds, peanuts, turmeric, and fresh cilantro",
+      "price": 8.5,
+      "category": "breakfast",
+      "allergens": [
+        "peanut"
+      ],
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "upma",
+      "name": "Upma",
+      "description": "Semolina roasted with mustard seeds, curry leaves, and mixed vegetables",
+      "price": 8.0,
+      "category": "breakfast",
+      "allergens": [
+        "gluten"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "idli-sambar",
+      "name": "Idli Sambar",
+      "description": "Steamed rice-lentil cakes served with lentil stew and coconut chutney",
+      "price": 9.0,
+      "category": "breakfast",
+      "allergens": [],
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "masala-dosa",
+      "name": "Masala Dosa",
+      "description": "Crisp rice crepe filled with spiced potato, served with sambar and chutney",
+      "price": 11.5,
+      "category": "breakfast",
+      "allergens": [],
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Masala%20dosa%2001.jpg?width=800"
+    },
+    {
+      "id": "aloo-paratha",
+      "name": "Aloo Paratha",
+      "description": "Whole-wheat flatbread stuffed with spiced potato, served with yogurt and pickle",
+      "price": 10.0,
+      "category": "breakfast",
+      "allergens": [
+        "gluten",
+        "dairy"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "kadhai-paneer",
+      "name": "Kadhai Paneer",
+      "description": "Paneer and peppers tossed in a smoky roasted-coriander and chili gravy",
+      "price": 17.0,
+      "category": "curries",
+      "allergens": [
+        "dairy"
+      ],
+      "tags": [
+        "vegetarian",
+        "gluten-free",
+        "spicy"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "malai-kofta",
+      "name": "Malai Kofta",
+      "description": "Paneer and potato dumplings in a creamy cashew and tomato gravy",
+      "price": 17.5,
+      "category": "curries",
+      "allergens": [
+        "dairy",
+        "tree-nut"
+      ],
+      "tags": [
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "mushroom-do-pyaza",
+      "name": "Mushroom Do Pyaza",
+      "description": "Button mushrooms and pearl onions in a tomato-onion masala",
+      "price": 15.5,
+      "category": "curries",
+      "allergens": [],
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1506368249639-73a05d6f6488?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "veg-kheema",
+      "name": "Veg Kheema",
+      "description": "Spiced crumbled soy and peas served with pav, a Maharashtrian favorite",
+      "price": 14.0,
+      "category": "curries",
+      "allergens": [
+        "soy",
+        "gluten"
+      ],
+      "tags": [
+        "vegan",
+        "vegetarian"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "hyderabadi-veg-biryani",
+      "name": "Hyderabadi Veg Biryani",
+      "description": "Slow-dum biryani with vegetables, fried onions, and saffron",
+      "price": 17.0,
+      "category": "rice",
+      "allergens": [],
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hyderabadi%20Veg%20Biryani.jpg?width=800"
+    },
+    {
+      "id": "veg-manchurian",
+      "name": "Veg Manchurian",
+      "description": "Crisp vegetable dumplings in a tangy ginger-soy-chili sauce",
+      "price": 12.5,
+      "category": "indo-chinese",
+      "allergens": [
+        "gluten",
+        "soy"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "hakka-noodles",
+      "name": "Hakka Noodles",
+      "description": "Stir-fried noodles with cabbage, peppers, and scallions in a light soy glaze",
+      "price": 13.0,
+      "category": "indo-chinese",
+      "allergens": [
+        "gluten",
+        "soy"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "chilli-paneer",
+      "name": "Chilli Paneer",
+      "description": "Crisp paneer tossed with peppers, onion, and a sweet-chili glaze",
+      "price": 14.0,
+      "category": "indo-chinese",
+      "allergens": [
+        "dairy",
+        "gluten",
+        "soy"
+      ],
+      "tags": [
+        "vegetarian",
+        "spicy"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d6?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "vada-pav",
+      "name": "Vada Pav",
+      "description": "Spiced potato fritter in a soft bun with garlic and green chutney",
+      "price": 6.0,
+      "category": "street-food",
+      "allergens": [
+        "gluten"
+      ],
+      "tags": [
+        "vegan",
+        "vegetarian"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "pav-bhaji",
+      "name": "Pav Bhaji",
+      "description": "Buttered mixed-vegetable mash served with toasted pav and onions",
+      "price": 12.0,
+      "category": "street-food",
+      "allergens": [
+        "gluten",
+        "dairy"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "bhel-puri",
+      "name": "Bhel Puri",
+      "description": "Puffed rice, sev, onion, and tamarind tossed together for a tangy crunch",
+      "price": 7.5,
+      "category": "street-food",
+      "allergens": [
+        "gluten"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "raita",
+      "name": "Raita",
+      "description": "Whipped yogurt with cucumber, mint, and roasted cumin",
+      "price": 3.5,
+      "category": "sides",
+      "allergens": [
+        "dairy"
+      ],
+      "tags": [
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "papad",
+      "name": "Papad",
+      "description": "Roasted crisp lentil wafer, perfect with any meal",
+      "price": 2.0,
+      "category": "sides",
+      "allergens": [],
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "indian-pickle",
+      "name": "Indian Pickle",
+      "description": "Mango and lime pickle, tangy and spicy",
+      "price": 2.5,
+      "category": "sides",
+      "allergens": [],
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "rasmalai",
+      "name": "Rasmalai",
+      "description": "Soft paneer discs soaked in saffron and cardamom milk",
+      "price": 7.0,
+      "category": "desserts",
+      "allergens": [
+        "dairy"
+      ],
+      "tags": [
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1666190092159-3171cf0fbb12?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "kulfi",
+      "name": "Kulfi",
+      "description": "Dense, slow-frozen pistachio and cardamom ice cream",
+      "price": 6.0,
+      "category": "desserts",
+      "allergens": [
+        "dairy",
+        "tree-nut"
+      ],
+      "tags": [
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "nimbu-pani",
+      "name": "Nimbu Pani",
+      "description": "Freshly squeezed lemonade with mint, black salt, and a hint of cumin",
+      "price": 4.5,
+      "category": "drinks",
+      "allergens": [],
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "jaljeera",
+      "name": "Jaljeera",
+      "description": "Cumin and black-salt cooler with lemon and mint",
+      "price": 4.5,
+      "category": "drinks",
+      "allergens": [],
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "thandai",
+      "name": "Thandai",
+      "description": "Chilled spiced almond and rose milk with saffron and peppercorns",
+      "price": 6.0,
+      "category": "drinks",
+      "allergens": [
+        "dairy",
+        "tree-nut"
+      ],
+      "tags": [
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=800&q=80&auto=format&fit=crop"
+    }
   ]
 }

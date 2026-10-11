@@ -5,5 +5,11 @@
   "timezone": "America/Chicago",
   "theme": {"primary": "#c64b28"},
   "hours": {"daily": "11:00-22:30"},
-  "eta_minutes": 30
+  "eta_minutes": 30,
+  "tagline": "McKinney - Indian kitchen",
+  "blurb": "Slow-cooked curries, tandoor breads, and street-food favorites. Order ahead, skip the line.",
+  "address": "McKinney, Texas",
+  "phone": "(555) 123-4567",
+  "hours_text": "11:00 AM - 10:30 PM daily",
+  "open_till": "10:30 PM"
 }

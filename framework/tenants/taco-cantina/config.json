@@ -1,0 +1,15 @@
+{
+  "name": "Taco Cantina",
+  "currency": "USD",
+  "language": "en",
+  "timezone": "America/Chicago",
+  "theme": {"primary": "#15803d"},
+  "hours": {"daily": "10:30-23:00"},
+  "eta_minutes": 20,
+  "tagline": "Austin - Tacos & Cantina",
+  "blurb": "Street-style tacos, burritos, and ice-cold horchata. Order ahead, skip the line.",
+  "address": "Austin, Texas",
+  "phone": "(555) 345-6789",
+  "hours_text": "10:30 AM - 11:00 PM daily",
+  "open_till": "11:00 PM"
+}

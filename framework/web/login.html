@@ -1,0 +1,109 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Saffron and Spice - Sign in</title>
+<style>
+:root{--ink:#2B2118;--muted:#8A7A6B;--bg:#FAF7F2;--card:#fff;--line:#EAE0D2;--brand:#C2410C;--brand2:#EA580C}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh;display:grid;place-items:center;padding:22px}
+.wrap{width:min(960px,100%);display:grid;grid-template-columns:1.1fr 1fr;background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 24px 60px #2B211822}
+.hero{background:linear-gradient(140deg,#7C2D12,#C2410C 55%,#EA580C);color:#fff;padding:38px 34px;display:flex;flex-direction:column;gap:14px}
+.hero .logo{width:52px;height:52px;border-radius:15px;background:#ffffff2a;border:1px solid #ffffff44;display:grid;place-items:center;font-size:27px}
+.hero h1{margin:6px 0 0;font:clamp(30px,4vw,44px)/1.05 Georgia,serif}
+.hero p{margin:0;color:#FFE8D2}
+.hero ul{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;font-size:14.5px}
+.hero li{background:#ffffff1c;border:1px solid #ffffff33;border-radius:12px;padding:10px 13px}
+.form{padding:34px 32px}
+.form h2{margin:0;font:26px Georgia,serif}
+.form p.sub{margin:5px 0 18px;color:var(--muted);font-size:14px}
+.tabs{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:5px;gap:5px;margin-bottom:16px}
+.tabs button{flex:1;border:0;background:transparent;border-radius:9px;padding:10px;font-weight:800;cursor:pointer;color:var(--muted)}
+.tabs button.on{background:var(--card);color:var(--ink);box-shadow:0 2px 8px #00000014}
+label{display:block;font-size:13px;font-weight:700;margin:12px 0 5px}
+input{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px;font:inherit}
+.btn{width:100%;border:0;border-radius:13px;background:var(--brand);color:#fff;padding:13px;font-weight:800;font-size:15px;cursor:pointer;margin-top:16px}
+.btn:disabled{opacity:.6}
+.divider{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12.5px;margin:18px 0 12px}
+.divider:before,.divider:after{content:"";flex:1;height:1px;background:var(--line)}
+.gbtn{width:100%;border:1.5px solid var(--line);background:#fff;border-radius:13px;padding:12px;font-weight:800;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px}
+.err{background:#FDECEA;border:1px solid #F5B5B5;color:#B91C1C;border-radius:12px;padding:10px 13px;font-size:13.5px;margin-top:12px;display:none}
+.ok{background:#EAF7EE;border:1px solid #A5D6A7;color:#14532D;border-radius:12px;padding:10px 13px;font-size:13.5px;margin-top:12px;display:none}
+.note{margin-top:14px;color:var(--muted);font-size:12.5px}
+.forgot-link{display:inline-block;margin-top:8px;font-size:12.5px;font-weight:700;color:var(--brand);text-decoration:none}
+.forgot-link:hover{text-decoration:underline}
+.row2{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end}
+.mini-btn{border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:12px 14px;font-weight:800;cursor:pointer;white-space:nowrap}
+.mini-btn:disabled{opacity:.6}
+@media(max-width:820px){.wrap{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hero">
+<div class="logo">S</div>
+<h1>Good food starts here.</h1>
+<p>Sign in to order ahead, chat with Meera, and track pickup.</p>
+<ul><li>Veg boxes in green, non-veg in red</li><li>Server-priced checkout, no surprises</li><li>Pickup in 20-30 min</li></ul>
+</div>
+<div class="form">
+<h2 id="title">Welcome back</h2>
+<p class="sub">Your redesign at <b>/app</b> is the landing page after login.</p>
+<div class="tabs"><button id="t-login" class="on">Log in</button><button id="t-reg">Register</button></div>
+<div id="auth-panel">
+<div id="name-row" style="display:none"><label for="name">Name</label><input id="name" placeholder="Priya Sharma"></div>
+<label for="email">Email</label><input id="email" type="email" placeholder="you@example.com">
+<label for="password">Password</label><input id="password" type="password" placeholder="Min 6 characters">
+<a href="#" class="forgot-link" id="forgot-open">Forgot password?</a>
+<button class="btn" id="go">Log in</button>
+</div>
+<div id="reset-panel" style="display:none">
+<label for="r-email">Gmail address</label>
+<div class="row2">
+<input id="r-email" type="email" placeholder="you@gmail.com">
+<button class="mini-btn" id="r-send">Send code</button>
+</div>
+<label for="r-code">Reset code</label><input id="r-code" inputmode="numeric" autocomplete="one-time-code" placeholder="6-digit code">
+<label for="r-new">New password</label><input id="r-new" type="password" placeholder="Min 6 characters">
+<button class="btn" id="r-go">Reset password</button>
+<a href="#" class="forgot-link" id="forgot-back">Back to log in</a>
+</div>
+<div class="err" id="err"></div>
+<div class="ok" id="ok"></div>
+<div class="divider">or continue with</div>
+<div id="gbtn-wrap"><button class="gbtn" id="google">G Continue with Google</button></div>
+<p class="note" id="gnote">Google activates once GOOGLE_CLIENT_ID is set. Dev login works now.</p>
+</div>
+</div>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script>
+var mode='login';
+var tL=document.getElementById('t-login'),tR=document.getElementById('t-reg'),nr=document.getElementById('name-row'),go=document.getElementById('go'),title=document.getElementById('title'),err=document.getElementById('err');
+function showErr(m){err.style.display='block';err.textContent=m}
+function setMode(m){mode=m;tL.classList.toggle('on',m==='login');tR.classList.toggle('on',m==='reg');nr.style.display=m==='reg'?'block':'none';go.textContent=m==='reg'?'Create account':'Log in';title.textContent=m==='reg'?'Create your account':'Welcome back';err.style.display='none'}
+tL.onclick=function(){setMode('login')};tR.onclick=function(){setMode('reg')};
+function done(tk,user){try{localStorage.setItem('auth_token',tk);localStorage.setItem('auth_user',JSON.stringify(user))}catch(e){}location.href='/app'}
+go.onclick=async function(){err.style.display='none';go.disabled=true;var email=document.getElementById('email').value.trim(),pw=document.getElementById('password').value,name=document.getElementById('name').value.trim();
+try{if(!email||!pw)throw new Error('Enter email and password.');var url=mode==='reg'?'/api/auth/register':'/api/auth/login';var body=mode==='reg'?{name:name||email.split('@')[0],email:email,password:pw}:{email:email,password:pw};
+var r=await fetch(url,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});var d=await r.json();if(!r.ok)throw new Error(d.detail||'Auth failed.');done(d.token,d.user)}catch(e){showErr(e.message)}go.disabled=false};
+var resetPanel=document.getElementById('reset-panel'),authPanel=document.getElementById('auth-panel'),dividerEl=document.querySelector('.divider');
+function showOk(m){var o=document.getElementById('ok');o.style.display='block';o.textContent=m}
+function hideOk(){document.getElementById('ok').style.display='none'}
+function showReset(on){document.getElementById('tabs').style.display=on?'none':'flex';authPanel.style.display=on?'none':'block';resetPanel.style.display=on?'block':'none';dividerEl.style.display=on?'none':'flex';document.getElementById('gbtn-wrap').style.display=on?'none':'block';document.getElementById('gnote').style.display=on?'none':'block';err.style.display='none';hideOk()}
+document.getElementById('forgot-open').onclick=function(e){e.preventDefault();showReset(true);var em=document.getElementById('email').value.trim();if(em)document.getElementById('r-email').value=em};
+document.getElementById('forgot-back').onclick=function(e){e.preventDefault();showReset(false)};
+document.getElementById('r-send').onclick=async function(){err.style.display='none';hideOk();var b=this;b.disabled=true;b.textContent='Sending...';
+try{var r=await fetch('/api/auth/forgot',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:document.getElementById('r-email').value.trim()})});var d=await r.json();if(!r.ok)throw new Error(d.detail||'Could not send the code.');if(d.dev_code){showOk('Local dev mode - your reset code is: '+d.dev_code+' (set GMAIL_ADDRESS + GMAIL_APP_PASSWORD to email it instead)')}else{showOk(d.detail)}}catch(e){err.style.display='block';err.textContent=e.message}b.disabled=false;b.textContent='Send code'};
+document.getElementById('r-go').onclick=async function(){err.style.display='none';hideOk();var b=this;b.disabled=true;b.textContent='Resetting...';
+try{var em2=document.getElementById('r-email').value.trim(),code=document.getElementById('r-code').value.trim(),pw2=document.getElementById('r-new').value;if(!code)throw new Error('Enter the 6-digit code.');if(pw2.length<6)throw new Error('New password must be at least 6 characters.');var r=await fetch('/api/auth/reset',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:em2,code:code,password:pw2})});var d=await r.json();if(!r.ok)throw new Error(d.detail||'Reset failed.');showReset(false);document.getElementById('email').value=em2;document.getElementById('password').value='';showOk('Password updated. You can log in now.')}catch(e){err.style.display='block';err.textContent=e.message}b.disabled=false;b.textContent='Reset password'};
+var G=null;
+async function cfg(){try{var r=await fetch('/api/auth/config');G=await r.json();if(!G.google_enabled){document.getElementById('gnote').textContent='Dev login works now. Set GOOGLE_CLIENT_ID + restart to enable Google.';return}
+google.accounts.id.initialize({client_id:G.google_client_id,callback:onGoogle});google.accounts.id.renderButton(document.getElementById('gbtn-wrap'),{theme:'outline',size:'large'});document.getElementById('google').style.display='none';document.getElementById('gnote').textContent='Google sign-in is live.'}catch(e){}}
+async function onGoogle(resp){try{var r=await fetch('/api/auth/google',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({id_token:resp.credential})});var d=await r.json();if(!r.ok)throw new Error(d.detail||'Google failed');done(d.token,d.user)}catch(e){showErr(e.message)}}
+document.getElementById('google').onclick=function(){if(!G||!G.google_enabled)showErr('Set GOOGLE_CLIENT_ID on the server, then restart. Dev login works now.')};
+try{if(localStorage.getItem('auth_token'))location.href='/app'}catch(e){}
+window.addEventListener('load',cfg);
+</script>
+</body>
+</html>

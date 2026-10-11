@@ -1,0 +1,161 @@
+{
+  "items": [
+    {
+      "id": "edamame",
+      "name": "Edamame",
+      "description": "Steamed young soybeans finished with flaky sea salt",
+      "price": 5.5,
+      "category": "starters",
+      "allergens": [
+        "soy"
+      ],
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1625944230945-1b7dd3b949ab?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "miso-soup",
+      "name": "Miso Soup",
+      "description": "Silken tofu, wakame, and scallions in house dashi broth",
+      "price": 4.5,
+      "category": "starters",
+      "allergens": [
+        "soy"
+      ],
+      "tags": [
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1607301405390-d831c242f59b?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "spicy-tuna-roll",
+      "name": "Spicy Tuna Roll",
+      "description": "Bluefin tuna, chili mayo, and cucumber wrapped in nori and rice",
+      "price": 9.5,
+      "category": "rolls",
+      "allergens": [
+        "fish",
+        "soy"
+      ],
+      "tags": [
+        "spicy"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "california-roll",
+      "name": "California Roll",
+      "description": "Snow crab, avocado, and cucumber with tobiko",
+      "price": 8.5,
+      "category": "rolls",
+      "allergens": [
+        "shellfish",
+        "soy"
+      ],
+      "tags": [],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "salmon-nigiri",
+      "name": "Salmon Nigiri",
+      "description": "Two pieces of lightly seared salmon over seasoned rice",
+      "price": 7.0,
+      "category": "nigiri",
+      "allergens": [
+        "fish",
+        "soy"
+      ],
+      "tags": [
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "vegetable-rolls",
+      "name": "Vegetable Rolls",
+      "description": "Avocado, cucumber, pickled carrot, and shiso in soy wraps",
+      "price": 7.5,
+      "category": "rolls",
+      "allergens": [
+        "soy"
+      ],
+      "tags": [
+        "vegan",
+        "vegetarian"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1615361200141-f45040f367be?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "chicken-teriyaki",
+      "name": "Chicken Teriyaki",
+      "description": "Glazed thigh meat grilled and sliced with steamed rice",
+      "price": 15.0,
+      "category": "mains",
+      "allergens": [
+        "soy"
+      ],
+      "tags": [
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "veggie-udon",
+      "name": "Vegetable Udon",
+      "description": "Thick wheat noodles in dashi broth with seasonal vegetables",
+      "price": 12.0,
+      "category": "mains",
+      "allergens": [
+        "gluten",
+        "soy"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1618841557871-b4664fbf0cb3?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "matcha-ice-cream",
+      "name": "Matcha Ice Cream",
+      "description": "Two scoops of stone-ground Uji matcha ice cream",
+      "price": 6.0,
+      "category": "desserts",
+      "allergens": [
+        "dairy"
+      ],
+      "tags": [
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800&q=80&auto=format&fit=crop"
+    },
+    {
+      "id": "genmaicha",
+      "name": "Genmaicha",
+      "description": "Toasted green tea with popped brown rice, served hot",
+      "price": 3.5,
+      "category": "drinks",
+      "allergens": [],
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "gluten-free"
+      ],
+      "available": true,
+      "image": "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=800&q=80&auto=format&fit=crop"
+    }
+  ]
+}

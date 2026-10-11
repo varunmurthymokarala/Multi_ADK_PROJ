@@ -1,4 +1,38 @@
 {
+  "tenants": [
+    {
+      "id": "saffron-spice",
+      "name": "Saffron Spice Bistro",
+      "logo": "https://pixabay.com/vectors/restaurant-food-meal-system-cook-3813631/",
+      "address": "123 Spice Market Street, Bangalore",
+      "phone": "+91 98765 43210",
+      "email": "hello@saffronspice.example",
+      "hours": "10:00 AM - 10:00 PM",
+      "delivery_time_min": 25,
+      "featured_item": "Chicken Biryani",
+      "menu_url": "https://commons.wikimedia.org/wiki/Special:FilePath"
+    },
+    {
+      "id": "sakura-sushi",
+      "name": "Sakura Sushi",
+      "address": "45 Cherry Blossom Lane, McKinney",
+      "phone": "+1 (555) 234-5678",
+      "email": "hello@sakurasushi.example",
+      "hours": "11:30 AM - 10:00 PM",
+      "delivery_time_min": 25,
+      "featured_item": "Spicy Tuna Roll"
+    },
+    {
+      "id": "taco-cantina",
+      "name": "Taco Cantina",
+      "address": "89 Avocado Row, Austin",
+      "phone": "+1 (555) 345-6789",
+      "email": "hello@tacocantina.example",
+      "hours": "10:30 AM - 11:00 PM",
+      "delivery_time_min": 20,
+      "featured_item": "Beef Al Pastor"
+    }
+  ],
   "models": [
     {
       "title": "Local Chat",

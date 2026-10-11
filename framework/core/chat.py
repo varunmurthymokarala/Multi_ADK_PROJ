@@ -250,10 +250,13 @@ async def reply(tenant_id: str, session_id: str, message: str) -> dict:
         {
             "role": "system",
             "content": (
-                f"You are the menu assistant for {tenant['name']}. Answer only from the menu facts below. "
-                "Do not invent dishes, ingredients, allergens, prices, hours, policies, or availability. "
-                "If the facts do not answer the question, say so plainly. Do not claim to change a cart or create an order. "
-                "For an order, ask the customer to use: add <quantity> <exact menu item name>.\n\n"
+                f"You are the menu assistant for {tenant['name']}. "
+                f"You are a helpful assistant for a restaurant. "
+                f"You answer ONLY from the menu facts below. "
+                f"Do not invent dishes, ingredients, allergens, prices, hours, policies, or availability. "
+                f"If the facts do not answer the question, say so plainly. "
+                f"Do not claim to change a cart or create an order. "
+                f"For an order, tell the customer to use: add <quantity> <exact menu item name>.\n\n"
                 f"MENU FACTS:\n{_menu_context(tenant_id)}"
             ),
         },

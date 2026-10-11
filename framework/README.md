@@ -18,9 +18,14 @@ Open `http://127.0.0.1:8000` and try:
 
 - `show menu`
 - `vegetarian options`
-- `add 2 Margherita Pizza`
+- `add 2 Chicken Biryani`
 - `show cart`
 - `What would you recommend for a vegetarian?`
+
+The restaurant dropdown in the nav lists three sample tenants: `saffron-spice`
+(full 41-item menu), plus demo tenants `sakura-sushi` and `taco-cantina` with
+10-item menus each. Adding another restaurant is still just a new folder under
+`tenants/` with `config.json` + `menu.json`.
 
 ## Verify it
 

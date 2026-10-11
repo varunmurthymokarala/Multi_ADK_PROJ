@@ -18,7 +18,7 @@ STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
 STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET", "")
 
 # JWT signing key (random per install — change for prod)
-JWT_SECRET = os.getenv("JWT_SECRET", "dev-secret-change-me")
+JWT_SECRET = os.getenv("JWT_SECRET", "dev-secret-change-me-please-use-32-chars")
 JWT_ALG = "HS256"
 
 # SQLite DB (zero-cost, single file)
